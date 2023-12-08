@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+    <title>Self-driving car</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="carCanvas"></canvas>
+<div id="verticalButtons">
+    <button onclick="save(this)">Save model</button>
+    <button onclick="discard()">Discard model</button>
+    <input type="range" min="1" max="100" value="1" id="slider" oninput="updateFrameLoop(this)" title="Total loops per frames">
+    <input type="range" min="1" max="500" value="500" id="population" oninput="updatePopulation(this)"  title="Total car population">
+</div>
+<canvas id="networkCanvas"></canvas>
+<section style="padding: 10px">
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <div id="nn-info">
+        <p>
+            NeuralNetwork contains virtual "neurons" that are arranged in layers that are connected to each other. The neurons pass on the information and thereby perform calculations.
+        </p>
+        <p>
+            <strong>Weights == arrows</strong> <br>
+            Learning occurs, in part, by the strengthening of connections between neurons. <br>
+            With weighted inputs, the network can increase or decrease the strength of the connection between each neuron in this layer and the neurons in the next layer. <br>
+            Weights are the co-efficients of the equation which you are trying to resolve during the training phase.<br>
+            The weights are displayed in arrows between the neurons. The weights strengths are displayed as the arrow's alphas.
+        </p>
+        <p>
+            <strong>Bias == cycle around neurons</strong> <br>
+            While weights enable an artificial neural network to adjust the strength of connections between neurons,
+            bias can be used to make adjustments within neurons. <br>
+            Basically the addition of bias reduces the variance and hence introduces flexibility and better generalisation to the neural network(non-linearity). <br>
+            The bias strengths are displayed as the cycle's alphas
+        </p>
+
+        <p><strong>Network colors:</strong> <br>
+            RED elements are negative values<br>
+            YELLOW are positive values
+        </p>
+    </div>
+</section>
+<script src="../neuroevolution/matrix.js"></script>
+<script src="../neuroevolution/network.js"></script>
+<script src="../neuroevolution/ga.js"></script>
+<script src="../neuroevolution/networkVisualizer.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+<script src="sensor.js"></script>
+<script src="utils.js"></script>
+<script src="road.js"></script>
+<script src="controls.js"></script>
+<script src="car.js"></script>
+<script src="game.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
