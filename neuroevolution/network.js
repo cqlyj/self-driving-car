@@ -69,9 +69,6 @@ class NeuralNetwork {
 
 
     #createLayers(layerNodesCounts) {
-        /**
-         * @type Array.<Layer>
-         */
         this.layers = []
         this.layers.push(new Layer(
                 layerNodesCounts[0],
@@ -79,20 +76,27 @@ class NeuralNetwork {
                 Activation.SIGMOID,
                 Layer.INPUT
         ))
-
+    
         for (let i = 0; i < layerNodesCounts.length - 1; i++) {
+            let activationType;
             let layerType = Layer.HIDDEN;
+    
             if (i == layerNodesCounts.length - 2) {
+                activationType = Activation.SIGMOID;
                 layerType = Layer.OUTPUT;
+            } else {
+                activationType = Activation.ReLU;
             }
+    
             this.layers.push(new Layer(
                     layerNodesCounts[i],
                     layerNodesCounts[i + 1],
-                    Activation.SIGMOID,
+                    activationType,
                     layerType
             ))
         }
     }
+    
 
     // Argument validator functions
     #feedforwardArgsValidator(input_array) {
